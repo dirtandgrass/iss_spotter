@@ -17,6 +17,6 @@ fetchMyIP((error, ip) => {
       console.log(ERROR_FETCH , error);
       return;
     }
-    console.log('data fetched:', data);
+    console.log('co-ords fetched:', data);
   });
 });
