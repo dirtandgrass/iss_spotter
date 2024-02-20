@@ -43,7 +43,15 @@ const fetchCoordsByIP = (ip, callback) => {
       callback(Error(msg), null);
       return;
     }
-    const {latitude, longitude} = JSON.parse(body);
+
+    // get fields we want from the response body
+    const {latitude, longitude,success} = JSON.parse(body);
+
+    // if service can find coordinates
+    if (!success) {
+      callback(Error(`Failed to find coordinates for ${ip}`), null);
+      return;
+    }
     callback(null, {latitude, longitude});
   });
 };
